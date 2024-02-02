@@ -1,4 +1,4 @@
-import { SvelteComponent } from "svelte";
+import { SvelteComponentTyped } from "svelte";
 declare const __propDef: {
     props: {
         /**
@@ -33,6 +33,6 @@ declare const __propDef: {
 export type DialProps = typeof __propDef.props;
 export type DialEvents = typeof __propDef.events;
 export type DialSlots = typeof __propDef.slots;
-export default class Dial extends SvelteComponent<DialProps, DialEvents, DialSlots> {
+export default class Dial extends SvelteComponentTyped<DialProps, DialEvents, DialSlots> {
 }
 export {};
