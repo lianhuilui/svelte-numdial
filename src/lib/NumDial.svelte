@@ -47,7 +47,7 @@
      * true: pad left with '0'
      * false: pad left with ' '
      */
-    export let padZero: boolean = false;
+    export let pad_zero: boolean = false;
 
     let lastnumber: number;
     let direction = 0;
@@ -56,7 +56,7 @@
     let bgElement: HTMLElement;
 
     $: {
-        if (padZero) {
+        if (pad_zero) {
             if (number > 0) {
                 tokens = number?.toString().padStart(min_width, "0").split("");
             } else if (number < 0){
@@ -119,7 +119,6 @@
                 fullnum={number}
                 num={token}
                 {direction}
-                {delta}
                 {force}
                 {scroll_duration}
             />

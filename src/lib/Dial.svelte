@@ -13,12 +13,6 @@
     export let direction: number = 0;
 
     /**
-     * Positive means the number is going up, and vice versa.
-     * When a negative number is going LESS, this should be negative.
-     */
-    export let delta: number = 0;
-
-    /**
      * forces the dial to scroll even when the number is the same.
      * e.g. when going from 10 -> 20, 0 will do a full loop
      */
