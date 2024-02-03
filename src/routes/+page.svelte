@@ -17,8 +17,14 @@
     });
 </script>
 
-<div
-    style="padding: 2px; border-radius: 4px; background-color: lightgray; width: fit-content;"
->
-    <NumDial {number} min_width={6} pad_zero={true} />
-</div>
+<NumDial
+    min_width={6}
+    pad_zero={true}
+    flash={true}
+    {number}
+
+    dial_wrapper_styles=""
+    last_dial_wrapper_style=""
+    style=""
+    last_dial_style=""
+/>

@@ -9,6 +9,12 @@ declare const __propDef: {
              * Even when negative number is going LESS, this should be positive
              */ direction?: number | undefined;
         /**
+             * CSS styles
+             */ style?: string | undefined;
+        /**
+             * CSS styles
+             */ wrapper_style?: string | undefined;
+        /**
              * forces the dial to scroll even when the number is the same.
              * e.g. when going from 10 -> 20, 0 will do a full loop
              */ force?: boolean | undefined;

@@ -1,5 +1,10 @@
 <script>import Dial from "./Dial.svelte";
 export let number;
+export let style = "";
+export let dial_styles = "";
+export let last_dial_style = "";
+export let dial_wrapper_styles = "";
+export let last_dial_wrapper_style = "";
 export let flash = false;
 export let flash_up_color = "white";
 export let flash_down_color = "white";
@@ -57,11 +62,12 @@ $: {
 <div
     class="bgElement"
     bind:this={bgElement}
-    style="--flash_up_color: {flash_up_color}; --flash_down_color: {flash_down_color}; --flash_duration: {flash_duration}"
+    style="--flash_up_color: {flash_up_color}; --flash_down_color: {flash_down_color}; --flash_duration: {flash_duration}; {style}"
 >
-    <div class="wrapper">
         {#each tokens as token, i (tokens.length - i)}
             <Dial
+                style={`${dial_styles} ${i === tokens.length-1 ? last_dial_style : ''}`}
+                wrapper_style={`${dial_wrapper_styles} ${i === tokens.length-1 ? last_dial_wrapper_style : ''}`}
                 force_threshold={Math.pow(10, tokens.length - i)}
                 fullnum={number}
                 num={token}
@@ -70,26 +76,27 @@ $: {
                 {scroll_duration}
             />
         {/each}
+
+    <div style="display: none">
+        <!-- prevent css preprocess from removing -->
+        <div class="up down"></div>
     </div>
 </div>
 
 <style>
-    :global(.bgElement) {
-        display: inline-block;
+    .bgElement {
+        display: flex;
         width: fit-content;
         transition-property: background-color;
         transition-duration: calc(var(--flash_duration) * 1ms);
-        border-radius: 2px;
+        overflow: hidden;
     }
-    :global(.up) {
+    .up {
         background-color: var(--flash_up_color, white);
         transition: background-color 0s;
     }
-    :global(.down) {
+    .down {
         background-color: var(--flash_down_color, white);
         transition: background-color 0s;
-    }
-    .wrapper {
-        display: flex;
     }
 </style>

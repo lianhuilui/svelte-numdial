@@ -5,6 +5,21 @@ declare const __propDef: {
              * The number to show
              */ number: number;
         /**
+             * CSS style
+             */ style?: string | undefined;
+        /**
+             * CSS style for individual dials
+             */ dial_styles?: string | undefined;
+        /**
+             * CSS style for the last dial
+             */ last_dial_style?: string | undefined;
+        /**
+             * dial wrapper CSS styles
+             */ dial_wrapper_styles?: string | undefined;
+        /**
+             * dial wrapper CSS styles
+             */ last_dial_wrapper_style?: string | undefined;
+        /**
              * Whether to flash updates with a different background
              */ flash?: boolean | undefined;
         /**

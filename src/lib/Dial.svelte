@@ -13,6 +13,16 @@
     export let direction: number = 0;
 
     /**
+     * CSS styles
+     */
+    export let style: string = "";
+
+    /**
+     * CSS styles
+     */
+    export let wrapper_style: string = "";
+
+    /**
      * forces the dial to scroll even when the number is the same.
      * e.g. when going from 10 -> 20, 0 will do a full loop
      */
@@ -34,7 +44,7 @@
     let buffer = -1;
 
     /**
-     * The full number that we are a part of. We keep track of this to calculate the 
+     * The full number that we are a part of. We keep track of this to calculate the
      * difference and to calculate if the force threshold is crossed.
      */
     export let fullnum: number = 0;
@@ -70,7 +80,7 @@
     const resetBuffer = async () => {
         // disable transition animations
         disable_animation = true;
-        
+
         // wait for DOM to update
         await tick();
 
@@ -141,47 +151,46 @@
     }
 </script>
 
-<div class="container">
-    <div class="bgElement">
-        <div
-            class="numbers"
-            style={`
+<div style={wrapper_style}>
+    <div
+        class="numbers"
+        style={`
 transform: translateY(${translateY_value}em);
 transition-duration: ${disable_animation ? "0s" : scroll_duration + "ms"};
-`}
-        >
-            <span>{@html special_char === " " ? "&nbsp;" : special_char}</span>
-            <span>0</span>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>6</span>
-            <span>7</span>
-            <span>8</span>
-            <span>9</span>
-            <span>0</span>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>6</span>
-            <span>7</span>
-            <span>8</span>
-            <span>9</span>
-            <span>0</span>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>6</span>
-            <span>7</span>
-            <span>8</span>
-            <span>9</span>
-        </div>
+${style}
+ `}
+    >
+        <span>{@html special_char === " " ? "&nbsp;" : special_char}</span>
+        <span>0</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>0</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>0</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
     </div>
 </div>
 
@@ -198,14 +207,5 @@ transition-duration: ${disable_animation ? "0s" : scroll_duration + "ms"};
         align-items: center;
         align-self: center;
         align-items: center;
-    }
-    .container {
-        height: 1em;
-        line-height: 1em;
-        overflow: hidden;
-    }
-
-    .container.debug {
-        overflow: visible;
     }
 </style>

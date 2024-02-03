@@ -1,6 +1,8 @@
 <script>import { tick } from "svelte";
 export let num = " ";
 export let direction = 0;
+export let style = "";
+export let wrapper_style = "";
 export let force = false;
 export let force_threshold = null;
 export let scroll_duration = 1e3;
@@ -73,47 +75,46 @@ $: {
 }
 </script>
 
-<div class="container">
-    <div class="bgElement">
-        <div
-            class="numbers"
-            style={`
+<div style={wrapper_style}>
+    <div
+        class="numbers"
+        style={`
 transform: translateY(${translateY_value}em);
 transition-duration: ${disable_animation ? "0s" : scroll_duration + "ms"};
-`}
-        >
-            <span>{@html special_char === " " ? "&nbsp;" : special_char}</span>
-            <span>0</span>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>6</span>
-            <span>7</span>
-            <span>8</span>
-            <span>9</span>
-            <span>0</span>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>6</span>
-            <span>7</span>
-            <span>8</span>
-            <span>9</span>
-            <span>0</span>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>6</span>
-            <span>7</span>
-            <span>8</span>
-            <span>9</span>
-        </div>
+${style}
+ `}
+    >
+        <span>{@html special_char === " " ? "&nbsp;" : special_char}</span>
+        <span>0</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>0</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>0</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
     </div>
 </div>
 
@@ -130,14 +131,5 @@ transition-duration: ${disable_animation ? "0s" : scroll_duration + "ms"};
         align-items: center;
         align-self: center;
         align-items: center;
-    }
-    .container {
-        height: 1em;
-        line-height: 1em;
-        overflow: hidden;
-    }
-
-    .container.debug {
-        overflow: visible;
     }
 </style>
