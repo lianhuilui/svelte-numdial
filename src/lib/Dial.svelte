@@ -159,6 +159,7 @@ transform: translateY(${translateY_value}em);
 transition-duration: ${disable_animation ? "0s" : scroll_duration + "ms"};
 ${style}
  `}
+        aria-hidden="true"
     >
         <span>{@html special_char === " " ? "&nbsp;" : special_char}</span>
         <span>0</span>

@@ -7,19 +7,19 @@
     export let number: number;
 
     /**
-     * CSS style 
+     * CSS style
      */
     export let style: string = "";
 
     /**
      * CSS style for individual dials
      */
-    export let dial_styles: string ="";
+    export let dial_styles: string = "";
 
     /**
      * CSS style for the last dial
      */
-    export let last_dial_style: string ="";
+    export let last_dial_style: string = "";
 
     /**
      * dial wrapper CSS styles
@@ -84,7 +84,7 @@
         if (pad_zero) {
             if (number > 0) {
                 tokens = number?.toString().padStart(min_width, "0").split("");
-            } else if (number < 0){
+            } else if (number < 0) {
                 tokens = [
                     "-",
                     ...Math.abs(number)
@@ -133,22 +133,28 @@
 </script>
 
 <div
+    aria-label={number.toString()}
     class="bgElement"
     bind:this={bgElement}
     style="--flash_up_color: {flash_up_color}; --flash_down_color: {flash_down_color}; --flash_duration: {flash_duration}; {style}"
+    on:copy={function(e) {e.preventDefault(); navigator.clipboard.writeText(number.toString());}}
 >
-        {#each tokens as token, i (tokens.length - i)}
-            <Dial
-                style={`${dial_styles} ${i === tokens.length-1 ? last_dial_style : ''}`}
-                wrapper_style={`${dial_wrapper_styles} ${i === tokens.length-1 ? last_dial_wrapper_style : ''}`}
-                force_threshold={Math.pow(10, tokens.length - i)}
-                fullnum={number}
-                num={token}
-                {direction}
-                {force}
-                {scroll_duration}
-            />
-        {/each}
+    {#each tokens as token, i (tokens.length - i)}
+        <Dial
+            style={`${dial_styles} ${
+                i === tokens.length - 1 ? last_dial_style : ""
+            }`}
+            wrapper_style={`${dial_wrapper_styles} ${
+                i === tokens.length - 1 ? last_dial_wrapper_style : ""
+            }`}
+            force_threshold={Math.pow(10, tokens.length - i)}
+            fullnum={number}
+            num={token}
+            {direction}
+            {force}
+            {scroll_duration}
+        />
+    {/each}
 
     <div style="display: none">
         <!-- prevent css preprocess from removing -->

@@ -60,22 +60,28 @@ $: {
 </script>
 
 <div
+    aria-label={number.toString()}
     class="bgElement"
     bind:this={bgElement}
     style="--flash_up_color: {flash_up_color}; --flash_down_color: {flash_down_color}; --flash_duration: {flash_duration}; {style}"
+    on:copy={function(e) {e.preventDefault(); navigator.clipboard.writeText(number.toString());}}
 >
-        {#each tokens as token, i (tokens.length - i)}
-            <Dial
-                style={`${dial_styles} ${i === tokens.length-1 ? last_dial_style : ''}`}
-                wrapper_style={`${dial_wrapper_styles} ${i === tokens.length-1 ? last_dial_wrapper_style : ''}`}
-                force_threshold={Math.pow(10, tokens.length - i)}
-                fullnum={number}
-                num={token}
-                {direction}
-                {force}
-                {scroll_duration}
-            />
-        {/each}
+    {#each tokens as token, i (tokens.length - i)}
+        <Dial
+            style={`${dial_styles} ${
+                i === tokens.length - 1 ? last_dial_style : ""
+            }`}
+            wrapper_style={`${dial_wrapper_styles} ${
+                i === tokens.length - 1 ? last_dial_wrapper_style : ""
+            }`}
+            force_threshold={Math.pow(10, tokens.length - i)}
+            fullnum={number}
+            num={token}
+            {direction}
+            {force}
+            {scroll_duration}
+        />
+    {/each}
 
     <div style="display: none">
         <!-- prevent css preprocess from removing -->
